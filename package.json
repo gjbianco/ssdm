@@ -1,0 +1,29 @@
+{
+  "name": "ssdm",
+  "version": "0.0.1",
+  "description": "Stupid Simple Dotfiles Manager",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gjbianco/ssdm.git"
+  },
+  "keywords": [
+    "ssdm",
+    "git",
+    "dotfiles",
+    "stupid",
+    "simple"
+  ],
+  "author": "Guy Bianco IV <gjbiancoiv@gmail.com> (http://gjbianco.github.io)",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "ssdm": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/gjbianco/ssdm/issues"
+  },
+  "homepage": "https://github.com/gjbianco/ssdm#readme"
+}
