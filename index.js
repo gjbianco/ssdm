@@ -49,6 +49,7 @@ if (args.git) {
   enterContext();
   gitCommand(args.git);
   exitContext();
+  process.exit();
 }
 
 // else
