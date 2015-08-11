@@ -13,14 +13,13 @@ if (args.help) {
 }
 
 if (args.version) {
-  console.log(require('./package.json').version);
-  process.exit();
+  printVersion();
 }
 
 // else
 printHelp();
 
-function printHelp() {
+function printHelp () {
   var cmd = require('path').basename(process.argv[1]);
   console.log(
     require('fs')
@@ -29,4 +28,14 @@ function printHelp() {
       .trim()
   );
   process.exit();
+}
+
+function printVersion () {
+  console.log(require('./package.json').version);
+  process.exit();
+}
+
+module.exports = {
+  printHelp: printHelp,
+  printVersion: printVersion
 }
