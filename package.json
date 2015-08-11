@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/gjbianco/ssdm/issues"
   },
-  "homepage": "https://github.com/gjbianco/ssdm#readme"
+  "homepage": "https://github.com/gjbianco/ssdm#readme",
+  "dependencies": {
+    "minimist": "^1.1.3"
+  }
 }
