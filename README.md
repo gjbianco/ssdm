@@ -4,7 +4,7 @@ SSDM uses git to track your dotfiles straight from your home directory (or where
 
 SSDM is a helper tool for the similarly named dotfiles management technique. If you ever want to stop using SSDM with your dotfiles, then you can just stop using it! You can continue to use the technique manually or without installing SSDM (e.g. on other machines).
 
-# Stupid Simple Dotfiles Management Technique #
+# Technique #
 
 SSDM uses git by managing the naming of the .git directory and .gitignore file. When not directly being called, .git gets renamed to .ssdm and .gitignore gets renamed to .ssdmignore. This allows us to store the actual git repo wherever we want without worrying about conflicting subdirectories.
 
