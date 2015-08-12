@@ -20,72 +20,51 @@ var args = require('minimist')(process.argv.slice(2), {
 
 console.log(args);
 
-if (args.help) {
-  printHelp();
-}
-
 if (args.version) {
   console.log(require('./package.json').version);
-  process.exit();
-}
-
-if (args.init) {
+} else if (args.init) {
   gitCommand('init');
   '*'.to('.gitignore');
   '\n!.gitignore'.toEnd('.gitignore');
   exitContext();
   echo('created .ssdm and .ssdmignore');
-  process.exit();
-}
-
-if (args.addfile) {
+} else if (args.addfile) {
   enterContext();
   appendIgnore(args.addfile);
   exitContext();
-  process.exit();
-}
-
-if (args.git) {
+} else if (args.commit) {
+  enterContext();
+  gitCommand('add .');
+  gitCommand('commit -m \'' + new Date() + '\'');
+  exitContext();
+} else if (args.git) {
   enterContext();
   gitCommand(args.git);
   exitContext();
-  process.exit();
+} else {
+  printHelp();
 }
 
-// else
-printHelp();
-
 function enterContext() {
-  onFileNotExist('.gitignore', function () {
-    mv('.ssdmignore', '.gitignore');
-  });
-  onFileNotExist('.git', function () {
-    mv('.ssdm', '.git');
-  });
+  mv('.ssdmignore', '.gitignore');
+  if (error()) {
+    exit(1);
+  }
+  mv('.ssdm', '.git');
+  if (error()) {
+    exit(1);
+  }
 }
 
 function exitContext() {
-  onFileNotExist('.ssdmignore', function () {
-    mv('.gitignore', '.ssdmignore')
-  });
-  onFileNotExist('.ssdm', function () {
-    mv('.git', '.ssdm');
-  });
-}
-
-function fileExistsExit(filename) {
-  console.log(filename, ' already exists -- exiting without mv');
-  exit(2);
-}
-
-function onFileNotExist(file, callback) {
-  fs.open(file, 'r', function (err) {
-    if (err && err.code === 'ENOENT') {
-      callback();
-    } else {
-      console.log(file, ' already exists -- exiting without mv');
-    }
-  });
+  mv('.gitignore', '.ssdmignore')
+  if (error()) {
+    exit(1);
+  }
+  mv('.git', '.ssdm');
+  if (error()) {
+    exit(1);
+  }
 }
 
 function gitCommand(command) {
@@ -115,5 +94,4 @@ function printHelp() {
       .replace(/\$0/g, cmd)
       .trim()
   );
-  process.exit();
 }
