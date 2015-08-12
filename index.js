@@ -56,34 +56,36 @@ if (args.git) {
 printHelp();
 
 function enterContext() {
-  if (_.isEmpty(ls('.gitignore'))) {
+  onFileNotExist('.gitignore', function () {
     mv('.ssdmignore', '.gitignore');
-  } else {
-    fileExistsExit('.gitignore');
-  }
-  if (_.isEmpty(ls('.git'))) {
+  });
+  onFileNotExist('.git', function () {
     mv('.ssdm', '.git');
-  } else {
-    fileExistsExit('.git');
-  }
+  });
 }
 
 function exitContext() {
-  if (_.isEmpty(ls('.ssdmignore'))) {
-    mv('.gitignore', '.ssdmignore');
-  } else {
-    fileExistsExit('.ssdmignore');
-  }
-  if (_.isEmpty(ls('.ssdm'))) {
+  onFileNotExist('.ssdmignore', function () {
+    mv('.gitignore', '.ssdmignore')
+  });
+  onFileNotExist('.ssdm', function () {
     mv('.git', '.ssdm');
-  } else {
-    fileExistsExit('.ssdm');
-  }
+  });
 }
 
 function fileExistsExit(filename) {
   console.log(filename, ' already exists -- exiting without mv');
   exit(2);
+}
+
+function onFileNotExist(file, callback) {
+  fs.open(file, 'r', function (err) {
+    if (err && err.code === 'ENOENT') {
+      callback();
+    } else {
+      console.log(file, ' already exists -- exiting without mv');
+    }
+  });
 }
 
 function gitCommand(command) {
