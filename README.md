@@ -20,3 +20,47 @@ On top of that, the .gitignore (.ssdmignore) file uses a whitelist technique to 
 # Installation #
 
 SSDM is written in Node and can be installed with `npm i -g ssdm`. This will install it globally and you can now run `ssdm` like any other command. Run it without arguments or with the `-h` option to get usage information.
+
+# Usage #
+
+SSDM uses a set of basic subcommands that act as basic macros to deal with the underlying git repository. At its core, SSDM will handle renaming .git and .gitignore to .ssdm and .ssdmignore, respectively.
+
+Every command (other than init) run inside of a "context" where repository and directory and ignore file have the real "git version" of the names. Since this step is necessary in order to have git actually deal with the repo as a repo, this means that SSDM has to refuse dealing with anything other than .ssdm and .ssdmignore. This is so it does not accidentally mess with a non-SSDM git repository.
+
+The currently supported commands are as follows:
+
+## --init ##
+
+This command initializes a new SSDM (git) repository. It also adds a basic ignore file (using the whitelist technique).
+
+##### Example: #####
+```
+ssdm --init
+```
+
+## --addfile <pattern> ##
+
+Add a file pattern to the whitelist. Subsequent commands will now deal with files matching this pattern.
+
+##### Example: #####
+```
+ssdm --addfile .bashrc
+```
+
+## --commit ##
+
+Make a new commit, automatically adding all new and/or changed files that match the whitelisted patterns.
+
+##### Example: #####
+```
+ssdm --commit
+```
+
+## --git <command> ##
+
+Call a git command from within the SSDM context. Currently, only supports a single word command, directly. If you need to run git commands that include 1 or more spaces, surround your entire git command with quotes.
+
+##### Example: #####
+```
+ssdm --git 'push origin master'
+```
