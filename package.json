@@ -27,7 +27,11 @@
   },
   "homepage": "https://github.com/gjbianco/ssdm#readme",
   "dependencies": {
+    "lodash": "^3.10.1",
     "minimist": "^1.1.3",
     "shelljs": "^0.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^1.1.0",
   }
 }
