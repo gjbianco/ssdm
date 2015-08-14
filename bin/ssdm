@@ -9,4 +9,7 @@ var args = parseArgs(process.argv.slice(2));
 var commands = args._;
 var options = args;
 
-ssdm(commands, options);
+var result = ssdm(commands, options);
+if (result) {
+  console.log(result);
+}
