@@ -1,6 +1,6 @@
 # SSDM - Stupid Simple Dotfiles Manager #
 
-[![Build Status](https://travis-ci.org/gjbianco/ssdm.svg?branch=master)](https://travis-ci.org/gjbianco/ssdm) [![Coverage Status](https://coveralls.io/repos/gjbianco/ssdm/badge.svg?branch=master&service=github)](https://coveralls.io/github/gjbianco/ssdm?branch=master)
+[![Build Status](https://travis-ci.org/gjbianco/ssdm.svg?branch=master)](https://travis-ci.org/gjbianco/ssdm) [![Coverage Status](https://coveralls.io/repos/gjbianco/ssdm/badge.svg?branch=master&service=github)](https://coveralls.io/github/gjbianco/ssdm?branch=master) [![Join the chat at https://gitter.im/gjbianco/ssdm](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gjbianco/ssdm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 SSDM uses git to track your dotfiles straight from your home directory (or wherever you want it to live) _without_ interference. You can leave your dotfiles right where they are and just use SSDM to back them up.
 
