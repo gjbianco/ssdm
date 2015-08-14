@@ -1,9 +1,9 @@
   Usage:
       $0 COMMAND [options]
 
-  Options:
+  Commands:
 
-      -h, --help
+      help
                           print usage information
 
       -v, --version
@@ -18,4 +18,4 @@
       --git <git command>
                           pass command through to git (within ssdm context)
 
-  COMMANDS
+  Options:

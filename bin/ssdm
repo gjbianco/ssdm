@@ -1,0 +1,12 @@
+#! /usr/bin/env node
+'use strict';
+
+var ssdm = require('../lib/ssdm.js');
+var fs = require('fs');
+var parseArgs = require('minimist');
+
+var args = parseArgs(process.argv.slice(2));
+var commands = args._;
+var options = args;
+
+ssdm(commands, options);

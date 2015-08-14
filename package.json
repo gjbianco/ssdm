@@ -20,7 +20,7 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "ssdm": "index.js"
+    "ssdm": "bin/ssdm"
   },
   "bugs": {
     "url": "https://github.com/gjbianco/ssdm/issues"
@@ -32,6 +32,6 @@
     "shelljs": "^0.5.2"
   },
   "devDependencies": {
-    "eslint": "^1.1.0",
+    "eslint": "^1.1.0"
   }
 }
