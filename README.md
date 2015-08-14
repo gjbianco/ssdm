@@ -29,38 +29,38 @@ Every command (other than init) run inside of a "context" where repository and d
 
 The currently supported commands are as follows:
 
-## --init ##
+## init ##
 
 This command initializes a new SSDM (git) repository. It also adds a basic ignore file (using the whitelist technique).
 
 ##### Example: #####
 ```
-ssdm --init
+ssdm init
 ```
 
-## --addfile <pattern> ##
+## addfile <pattern> ##
 
 Add a file pattern to the whitelist. Subsequent commands will now deal with files matching this pattern.
 
 ##### Example: #####
 ```
-ssdm --addfile .bashrc
+ssdm addfile .bashrc
 ```
 
-## --commit ##
+## commit ##
 
 Make a new commit, automatically adding all new and/or changed files that match the whitelisted patterns.
 
 ##### Example: #####
 ```
-ssdm --commit
+ssdm commit
 ```
 
-## --git <command> ##
+## git <command> ##
 
-Call a git command from within the SSDM context. Currently, only supports a single word command, directly. If you need to run git commands that include 1 or more spaces, surround your entire git command with quotes.
+Call a git command from within the SSDM context.
 
 ##### Example: #####
 ```
-ssdm --git 'push origin master'
+ssdm git push origin master
 ```
