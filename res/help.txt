@@ -6,16 +6,16 @@
       help
                           print usage information
 
-      -v, --version
+      version
                           show version info and exit
 
-      --init
+      init
                           initialize a new repo
 
-      -a, --adfile <file> [file2] [file3] ...
+      adfile <file> [file2] [file3] ...
                           makes the listed files available to commit
 
-      --git <git command>
+      git <git command>
                           pass command through to git (within ssdm context)
 
   Options:
