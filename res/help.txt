@@ -12,7 +12,7 @@
       init
                           initialize a new repo
 
-      adfile <file> [file2] [file3] ...
+      addfile <file> [file2] [file3] ...
                           makes the listed files available to commit
 
       git <git command>
