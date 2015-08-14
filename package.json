@@ -1,6 +1,6 @@
 {
   "name": "ssdm",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Stupid Simple Dotfiles Manager",
   "scripts": {
     "test": "mocha --reporter spec",
