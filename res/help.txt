@@ -15,6 +15,9 @@
       addfile <file> [file2] [file3] ...
                           makes the listed files available to commit
 
+      commit
+                          make new commit with new and/or changed whitelisted files
+
       git <git command>
                           pass command through to git (within ssdm context)
 
