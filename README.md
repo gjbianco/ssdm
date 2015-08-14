@@ -1,5 +1,7 @@
 # SSDM - Stupid Simple Dotfiles Manager #
 
+[![Build Status](https://travis-ci.org/gjbianco/ssdm.svg?branch=master)](https://travis-ci.org/gjbianco/ssdm)
+
 SSDM uses git to track your dotfiles straight from your home directory (or wherever you want it to live) _without_ interference. You can leave your dotfiles right where they are and just use SSDM to back them up.
 
 SSDM is a helper tool for the similarly named dotfiles management technique. If you ever want to stop using SSDM with your dotfiles, then you can just stop using it! You can continue to use the technique manually or without installing SSDM (e.g. on other machines).
