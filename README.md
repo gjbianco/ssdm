@@ -62,6 +62,10 @@ ssdm commit
 
 Call a git command from within the SSDM context.
 
+## list ##
+
+List the currently track_able_ files (i.e. whitelisted). These files are not necessarily tracked or even exist.
+
 ##### Example: #####
 ```
 ssdm git push origin master

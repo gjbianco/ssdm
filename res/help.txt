@@ -18,6 +18,9 @@
       commit
                           make new commit with new and/or changed whitelisted files
 
+      list
+                          list tracked files (don't necessariy exist)
+
       git <git command>
                           pass command through to git (within ssdm context)
 
