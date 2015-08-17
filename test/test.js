@@ -31,7 +31,12 @@ describe('#ssdm-util', function () {
 
   it ('should pass through git commands within the context', function () {
     var cmdResponse = ssdm(['git', 'status']);
-    var responsePattern = /^On branch master[\s\S]*$/;
+
+    // need to start with wildcard to account for
+    // some testrunners (e.g. the one used by Travis)
+    // automatically prepending each line with format chars
+    var responsePattern = /^.*On branch master[\s\S]*$/;
+    
     assert.match(cmdResponse, responsePattern);
   });
 
