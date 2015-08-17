@@ -28,6 +28,12 @@ describe('#ssdm-util', function () {
     expect(cmdResponse).to.equal(expected);
   });
 
+  it ('should pass through git commands within the context', function () {
+    var cmdResponse = ssdm(['git', 'status']);
+    var responsePattern = /^On branch master.*/;
+    expect(responsePattern.test(cmdResponse)).to.be.ok;
+  });
+
   afterEach(_tearDownTestDir);
 
 });
