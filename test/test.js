@@ -38,7 +38,6 @@ describe ('#ssdm-basic', function () {
     expect(readSsdm).to.throw(/.*ENOENT.*/);
     expect(readSsdmIgnore).to.throw(/.*ENOENT.*/);
     var cmdResponse = ssdm (['init']);
-    console.log(cmdResponse);
     expect(readSsdm).to.be.ok;
     expect(readSsdmIgnore).to.be.ok;
 
@@ -106,23 +105,44 @@ describe('#ssdm-adding', function () {
 
 });
 
-function _setUpTestDir() {
-    mkdir('test-dir');
-    cd('test-dir');
-    if (exec('git init', {silent: true}).code !== 0) {
-      echo('Error: \'git init\' failed');
-      return 1;
-    } else {
-      mv('.git', '.ssdm');
+describe('#ssdm-committing', function () {
+
+  beforeEach(_setUpTestDir);
+
+  it ('should commit changes ', function () {
+    var gitCount = function () {
+      return exec('git --git-dir=.ssdm rev-list HEAD --count', {async: false, silent: false})
+                  .output
+                  .trim();
     }
-    '*\n!.gitignore'.to('.ssdmignore');
+    var expected = '1';
+
+    expect(gitCount()).to.not.equal(expected);
+    var cmdResponse = ssdm(['commit']);
+    expect(gitCount()).to.equal(expected);
+  });
+
+  afterEach(_tearDownTestDir);
+
+});
+
+function _setUpTestDir() {
+  mkdir('test-dir');
+  cd('test-dir');
+  if (exec('git init', {silent: true}).code !== 0) {
+    echo('Error: \'git init\' failed');
+    return 1;
+  } else {
+    mv('.git', '.ssdm');
+  }
+  '*\n!.gitignore'.to('.ssdmignore');
 }
 
 function _tearDownTestDir() {
-    // make sure we are in test-dir before we start changing dirs
-    var testDirPattern = /.*\/test-dir\/?$/;
-    if (testDirPattern.test(process.cwd())) {
-      cd('..');
-    }
-    rm('-rf', 'test-dir');
+  // make sure we are in test-dir before we start changing dirs
+  var testDirPattern = /.*\/test-dir\/?$/;
+  if (testDirPattern.test(process.cwd())) {
+    cd('..');
+  }
+  rm('-rf', 'test-dir');
 }
