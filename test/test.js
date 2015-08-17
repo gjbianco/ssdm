@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var expect = require('chai').expect;
+var assert = require('chai').assert;
 var ssdm = require('../lib/ssdm.js');
 require('shelljs/global');
 
@@ -30,8 +31,8 @@ describe('#ssdm-util', function () {
 
   it ('should pass through git commands within the context', function () {
     var cmdResponse = ssdm(['git', 'status']);
-    var responsePattern = /^On branch master.*/;
-    expect(responsePattern.test(cmdResponse)).to.be.ok;
+    var responsePattern = /^On branch master[\s\S]*$/;
+    assert.match(cmdResponse, responsePattern);
   });
 
   afterEach(_tearDownTestDir);
