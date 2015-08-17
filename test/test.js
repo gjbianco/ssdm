@@ -23,6 +23,34 @@ describe ('#ssdm-basic', function () {
     expect(result).to.equal(version);
   });
 
+  it ('should initialize a new git repo on init', function () {
+    // basic setup
+    mkdir('test-dir');
+    cd('test-dir');
+
+    var readSsdm = function () {
+      return fs.readdirSync('.ssdm');
+    }
+    var readSsdmIgnore = function () {
+      return fs.readFileSync('.ssdmignore');
+    }
+
+    expect(readSsdm).to.throw(/.*ENOENT.*/);
+    expect(readSsdmIgnore).to.throw(/.*ENOENT.*/);
+    var cmdResponse = ssdm (['init']);
+    console.log(cmdResponse);
+    expect(readSsdm).to.be.ok;
+    expect(readSsdmIgnore).to.be.ok;
+
+    // basic teardown
+    // make sure we are in test-dir before we start changing dirs
+    var testDirPattern = /.*\/test-dir\/?$/;
+    if (testDirPattern.test(process.cwd())) {
+      cd('..');
+    }
+    rm('-rf', 'test-dir');
+  });
+
 });
 
 describe('#ssdm-util', function () {
