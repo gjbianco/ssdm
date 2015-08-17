@@ -17,6 +17,12 @@ describe ('#ssdm-basic', function () {
     expect(result).to.equal(help);
   });
 
+  it ('should display version on version command', function () {
+    var result = ssdm (['version']);
+    var version = require('../package.json').version;
+    expect(result).to.equal(version);
+  });
+
 });
 
 describe('#ssdm-util', function () {
@@ -36,8 +42,14 @@ describe('#ssdm-util', function () {
     // some testrunners (e.g. the one used by Travis)
     // automatically prepending each line with format chars
     var responsePattern = /^.*On branch master[\s\S]*$/;
-    
+
     assert.match(cmdResponse, responsePattern);
+  });
+
+  it ('should fail on git pass through with bad git command', function () {
+    var cmdResponse = ssdm(['git', 'foo']); // bad command
+    var expected = 'Error: \'git foo\' failed';
+    expect(cmdResponse).to.equal(expected);
   });
 
   afterEach(_tearDownTestDir);
