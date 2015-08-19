@@ -111,7 +111,7 @@ describe('#ssdm-committing', function () {
 
   it ('should commit changes ', function () {
     var gitCount = function () {
-      return exec('git --git-dir=.ssdm rev-list HEAD --count', {async: false, silent: false})
+      return exec('git --git-dir=.ssdm rev-list HEAD --count', {async: false, silent: true})
                   .output
                   .trim();
     }
