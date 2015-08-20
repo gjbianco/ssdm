@@ -58,7 +58,7 @@ describe('#ssdm-util', function () {
 
   it ('should list whitelisted files for list', function () {
     var cmdResponse = ssdm(['list']);
-    var expected = '*\n!.gitignore';
+    var expected = '*\n!.gitignore\n.ssdm';
     expect(cmdResponse).to.equal(expected);
   });
 
@@ -90,14 +90,14 @@ describe('#ssdm-adding', function () {
   it ('should add file pattern to whitelist', function () {
     var cmdResponse = ssdm (['addfile', '.bashrc']);
     var result = fs.readFileSync('.ssdmignore').toString();
-    var expected = '*\n!.gitignore\n!.bashrc';
+    var expected = '*\n!.gitignore\n.ssdm\n!.bashrc';
     expect(result).to.equal(expected);
   });
 
   it ('should add multiple file patterns to whitelist', function () {
     var cmdResponse = ssdm (['addfile', '.bashrc', '.vimrc', '.gitconfig']);
     var result = fs.readFileSync('.ssdmignore').toString();
-    var expected = '*\n!.gitignore\n!.bashrc\n!.vimrc\n!.gitconfig';
+    var expected = '*\n!.gitignore\n.ssdm\n!.bashrc\n!.vimrc\n!.gitconfig';
     expect(result).to.equal(expected);
   });
 
@@ -111,7 +111,8 @@ describe('#ssdm-committing', function () {
 
   it ('should commit changes ', function () {
     var gitCount = function () {
-      return exec('git --git-dir=.ssdm rev-list HEAD --count', {async: false, silent: true})
+      debugger;
+      return exec('git --git-dir=.ssdm -c user.name=\'mocha\' -c user.email=\'mocha@example.com\' rev-list HEAD --count', {async: false, silent: true})
                   .output
                   .trim();
     }
@@ -135,7 +136,7 @@ function _setUpTestDir() {
   } else {
     mv('.git', '.ssdm');
   }
-  '*\n!.gitignore'.to('.ssdmignore');
+  '*\n!.gitignore\n.ssdm'.to('.ssdmignore');
 }
 
 function _tearDownTestDir() {
