@@ -12,11 +12,11 @@
       init
                           initialize a new repo
 
-      addfile <file> [file2] [file3] ...
-                          makes the listed files available to commit
+      track <file> [file2] [file3] ...
+                          makes the listed files available to save
 
-      commit
-                          make new commit with new and/or changed whitelisted files
+      save
+                          save new or update tracked file(s)
 
       list
                           list tracked files (don't necessariy exist)
