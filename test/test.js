@@ -88,14 +88,14 @@ describe('#ssdm-adding', function () {
   beforeEach(_setUpTestDir);
 
   it ('should add file pattern to whitelist', function () {
-    var cmdResponse = ssdm (['addfile', '.bashrc']);
+    var cmdResponse = ssdm (['track', '.bashrc']);
     var result = fs.readFileSync('.ssdmignore').toString();
     var expected = '*\n!.gitignore\n.ssdm\n!.bashrc';
     expect(result).to.equal(expected);
   });
 
   it ('should add multiple file patterns to whitelist', function () {
-    var cmdResponse = ssdm (['addfile', '.bashrc', '.vimrc', '.gitconfig']);
+    var cmdResponse = ssdm (['track', '.bashrc', '.vimrc', '.gitconfig']);
     var result = fs.readFileSync('.ssdmignore').toString();
     var expected = '*\n!.gitignore\n.ssdm\n!.bashrc\n!.vimrc\n!.gitconfig';
     expect(result).to.equal(expected);
@@ -119,7 +119,7 @@ describe('#ssdm-committing', function () {
     var expected = '1';
 
     expect(gitCount()).to.not.equal(expected);
-    var cmdResponse = ssdm(['commit']);
+    var cmdResponse = ssdm(['save']);
     expect(gitCount()).to.equal(expected);
   });
 
