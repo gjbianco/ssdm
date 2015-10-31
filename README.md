@@ -40,22 +40,22 @@ This command initializes a new SSDM (git) repository. It also adds a basic ignor
 ssdm init
 ```
 
-## addfile <pattern> ##
+## track <pattern> ##
 
 Add a file pattern to the whitelist. Subsequent commands will now deal with files matching this pattern.
 
 ##### Example: #####
 ```
-ssdm addfile .bashrc
+ssdm track .bashrc
 ```
 
-## commit ##
+## save ##
 
 Make a new commit, automatically adding all new and/or changed files that match the whitelisted patterns.
 
 ##### Example: #####
 ```
-ssdm commit
+ssdm save
 ```
 
 ## git <command> ##
