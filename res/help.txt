@@ -2,26 +2,12 @@
       $0 COMMAND [options]
 
   Commands:
-
-      help
-                          print usage information
-
-      version
-                          show version info and exit
-
-      init
-                          initialize a new repo
-
-      track <file> [file2] [file3] ...
-                          makes the listed files available to save
-
-      save
-                          save new or update tracked file(s)
-
-      list
-                          list tracked files (don't necessariy exist)
-
-      git <git command>
-                          pass command through to git (within ssdm context)
+      help                       print usage information
+      version                    show version info and exit
+      init                       initialize a new repo
+      track <file> [file2 ..]    makes the listed files available to save
+      save                       save new or update tracked file(s)
+      list                       list tracked files (don't necessariy exist)
+      git <git command>          pass command through to git (within ssdm context)
 
   Options:
